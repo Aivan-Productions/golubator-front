@@ -1,13 +1,28 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Vue + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Some Chat</title>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <button class="back-button">&#8592;</button>
+            Some chat
+        </div>
+        <div class="chat-body">
+            <div class="message incoming"><span class="nickname">User1</span><div class="bubble">There are many variations of passages<span class="timestamp">12:38</span></div></div>
+            <div class="message incoming"><span class="nickname">User1</span><div class="bubble">There are many variations of passages. If you are going to use a passage of Lorem Ipsum, you need d d d d d d d<span class="timestamp">12:39</span></div></div>
+            <div class="message incoming"><span class="nickname">User1</span><div class="bubble">There ara<span class="timestamp">12:40</span></div></div>
+            <div class="message outgoing"><span class="nickname">You</span><div class="bubble">There are many variations<span class="timestamp">12:40</span></div></div>
+            <div class="message outgoing"><span class="nickname">You</span><div class="bubble">There are many variations of passages food<span class="timestamp">12:40</span></div></div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Input a message">
+            <button>&gt;</button>
+        </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
