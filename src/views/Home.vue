@@ -102,7 +102,7 @@
             </div>
         </div>
         <div class="grid grid-cols-[1fr_auto] gap-3 p-3 bg-[#F2F2F2] rounded-xl items-center">
-            <input class="p-2 border border-gray-300 rounded-full flex-grow" type="text" placeholder="Input text">
+            <input class="p-2 pl-5 pr-5 border border-gray-300 rounded-full flex-grow" type="text" placeholder="Input text">
             <button class="w-10 h-10 bg-white border-2 border-gray-300 rounded-full flex justify-center items-center text-gray-600 shadow-md hover:bg-gray-100">➤</button>
         </div>
     </div>
