@@ -109,11 +109,4 @@
     
 </template>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const chatContainer = document.querySelector(".overflow-y-auto");
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-    });
-</script>
-
 <script setup lang="ts"></script>
