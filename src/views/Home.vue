@@ -3,11 +3,11 @@
         <div class="flex flex-col gap-3 p-3 overflow-y-auto flex-grow no-scrollbar">
             <div v-for="(message, index) in messages" :key="message.id" class="flex justify-start max-w-[80%] p-3 bg-[#F2F2F2] rounded-xl shadow-md self-start w-fit relative">
                 <div class="flex flex-col">
-                    <div>It is a long established fact that a reader will be distracted</div>
+                    <div>{{ message.text }}</div>
                 </div>
                 <div class="flex flex-col items-end justify-between ml-5">
-                    <span class="text-lg">🤓</span>
-                    <span class="text-xs text-gray-500">12:30</span>
+                    <span class="text-lg">{{ message.emoji }}</span>
+                    <span class="text-xs text-gray-500">{{ message.timestamp }}</span>
                 </div>
             </div>
         </div>
