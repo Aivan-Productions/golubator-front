@@ -1,99 +1,9 @@
 <template>
     <div class="flex flex-col w-[500px] h-[700px] bg-white rounded-2xl shadow-lg p-3 overflow-hidden">
         <div class="flex flex-col gap-3 p-3 overflow-y-auto flex-grow no-scrollbar">
-            <div class="flex justify-end max-w-[80%] p-3 bg-green-200 rounded-xl shadow-md self-end w-fit relative">
-                <div class="flex flex-col">
-                    <div>Hello, guys. I’m g.... Hello, guys. I’m g.... Hello, guys. I’m g.... Hello, guys. I’m g.... Hello, guys. I’m g.... Hello, guys. I’m g....</div>
-                </div>
-                <div class="flex flex-col items-end justify-between ml-5">
-                    <span class="text-lg">🤢</span>
-                    <span class="text-xs text-gray-500">12:30</span>
-                </div>
-            </div>
-            <div class="flex justify-start max-w-[80%] p-3 bg-[#F2F2F2] rounded-xl shadow-md self-start w-fit relative">
+            <div v-for="(message, index) in messages" :key="message.id" class="flex justify-start max-w-[80%] p-3 bg-[#F2F2F2] rounded-xl shadow-md self-start w-fit relative">
                 <div class="flex flex-col">
                     <div>It is a long established fact that a reader will be distracted</div>
-                </div>
-                <div class="flex flex-col items-end justify-between ml-5">
-                    <span class="text-lg">🤓</span>
-                    <span class="text-xs text-gray-500">12:30</span>
-                </div>
-            </div>
-            <div class="flex justify-end max-w-[80%] p-3 bg-green-200 rounded-xl shadow-md self-end w-fit relative">
-                <div class="flex flex-col">
-                    <div>It is a long established fact that a reader will be distracted</div>
-                </div>
-                <div class="flex flex-col items-end justify-between ml-5">
-                    <span class="text-lg">😍</span>
-                    <span class="text-xs text-gray-500">12:31</span>
-                </div>
-            </div>
-            <div class="flex justify-start max-w-[80%] p-3 bg-[#F2F2F2] rounded-xl shadow-md self-start w-fit relative">
-                <div class="flex flex-col">
-                    <div>It is a long established fact that a reader will be distracted It is a long established fact that a reader will be distracted It is a long established fact that a reader will be distracted It is a long established fact that a reader will be distracted</div>
-                </div>
-                <div class="flex flex-col items-end justify-between ml-5">
-                    <span class="text-lg">😴</span>
-                    <span class="text-xs text-gray-500">12:31</span>
-                </div>
-            </div>
-            <div class="flex justify-end max-w-[80%] p-3 bg-green-200 rounded-xl shadow-md self-end w-fit relative">
-                <div class="flex flex-col">
-                    <div>Hello, guys. I’m g....</div>
-                </div>
-                <div class="flex flex-col items-end justify-between ml-5">
-                    <span class="text-lg">🤢</span>
-                    <span class="text-xs text-gray-500">12:30</span>
-                </div>
-            </div>
-            <div class="flex justify-end max-w-[80%] p-3 bg-green-200 rounded-xl shadow-md self-end w-fit relative">
-                <div class="flex flex-col">
-                    <div>.</div>
-                </div>
-                <div class="flex flex-col items-end justify-between ml-5">
-                    <span class="text-lg">🤢</span>
-                    <span class="text-xs text-gray-500">12:30</span>
-                </div>
-            </div>
-            <div class="flex justify-end max-w-[80%] p-3 bg-green-200 rounded-xl shadow-md self-end w-fit relative">
-                <div class="flex flex-col">
-                    <div>.</div>
-                </div>
-                <div class="flex flex-col items-end justify-between ml-5">
-                    <span class="text-lg">🤢</span>
-                    <span class="text-xs text-gray-500">12:30</span>
-                </div>
-            </div>
-            <div class="flex justify-end max-w-[80%] p-3 bg-green-200 rounded-xl shadow-md self-end w-fit relative">
-                <div class="flex flex-col">
-                    <div>.</div>
-                </div>
-                <div class="flex flex-col items-end justify-between ml-5">
-                    <span class="text-lg">🤢</span>
-                    <span class="text-xs text-gray-500">12:30</span>
-                </div>
-            </div>
-            <div class="flex justify-end max-w-[80%] p-3 bg-green-200 rounded-xl shadow-md self-end w-fit relative">
-                <div class="flex flex-col">
-                    <div>.</div>
-                </div>
-                <div class="flex flex-col items-end justify-between ml-5">
-                    <span class="text-lg">🤢</span>
-                    <span class="text-xs text-gray-500">12:30</span>
-                </div>
-            </div>
-            <div class="flex justify-end max-w-[80%] p-3 bg-green-200 rounded-xl shadow-md self-end w-fit relative">
-                <div class="flex flex-col">
-                    <div>It is a long established fact that a reader will be distracted It is a long established fact that a reader will be distracted It is a long established fact that a reader will be distracted It is a long established fact that a reader will be distracted</div>
-                </div>
-                <div class="flex flex-col items-end justify-between ml-5">
-                    <span class="text-lg">😍</span>
-                    <span class="text-xs text-gray-500">12:31</span>
-                </div>
-            </div>
-            <div class="flex justify-start max-w-[80%] p-3 bg-[#F2F2F2] rounded-xl shadow-md self-start w-fit relative">
-                <div class="flex flex-col">
-                    <div>It is a long established fact that a reader will be distracte It is a long established fact that a reader will be distracte It is a long established fact that a reader will be distracte It is a long established fact that a reader will be distracte d</div>
                 </div>
                 <div class="flex flex-col items-end justify-between ml-5">
                     <span class="text-lg">🤓</span>
@@ -110,7 +20,40 @@
 </template>
 
 
-<script setup lang="ts">
+<script lang="ts">
+    import { defineComponent, ref, onMounted } from 'vue';
+    import axios from '../utils/axios';
+
+    export default defineComponent({
+        name: 'MyComponent',
+        setup() {
+            const messages = ref<any[]>([]);
+
+            const fetchMessages = async () => {
+                try {
+                    const response = await axios.get('chats/main/')
+                    messages.value = response.data;
+                    console.log(messages.value)
+                } catch (error) {
+                    console.error('Error with get data', error);
+                }
+            };
+
+            onMounted(() => {
+                fetchMessages();
+            });
+
+            return {
+                messages,
+            };
+        }
+    });
+
+</script>
+
+
+# script for scroll chat bottom
+<!-- <script setup lang="ts">
     document.addEventListener("DOMContentLoaded", () => {
         const chatContainer: HTMLElement | null = document.querySelector(".overflow-y-auto");
 
@@ -118,4 +61,4 @@
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }
     });
-</script>
+</script>  -->
