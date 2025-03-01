@@ -24,7 +24,6 @@
     import { ref, onMounted } from 'vue';
     import axios from '../utils/axios';
 
-    // Типизация для сообщений
     interface Message {
         text: string;
         emoji: string;
@@ -33,7 +32,6 @@
 
     const messages = ref<Message[]>([]);
 
-    // Функция для получения сообщений
     const fetchMessages = async () => {
         try {
             const response = await axios.get('chats/main/');
@@ -44,7 +42,6 @@
         }
     };
 
-    // Инициализация получения сообщений при монтировании компонента
     onMounted(() => {
         fetchMessages();
     });
