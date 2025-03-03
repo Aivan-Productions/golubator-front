@@ -1,8 +1,9 @@
 <template>
     <div class="flex flex-col w-[500px] h-[700px] bg-white rounded-2xl shadow-lg p-3 overflow-hidden">
         <ul class="flex flex-col gap-3 p-3 overflow-y-auto flex-grow no-scrollbar">
-            <li v-for="(message, index) in messages" :key="message.id"
-                class="flex justify-start max-w-[80%] p-3 bg-[#F2F2F2] rounded-xl shadow-md self-start w-fit relative">
+            <li v-for="(message) in messages.reverse()"
+                class="flex justify-start max-w-[80%] p-3 bg-[#F2F2F2] rounded-xl shadow-md self-start w-fit relative text-wrap">
+                <div class="max-w-[60%] flex flex-col break-words"></div>
                 <div class="flex flex-col">
                     <div>{{ message.text }}</div>
                 </div>
@@ -36,7 +37,7 @@ const messages = ref<Message[]>([]);
 const axiosMessage = async () => {
     try {
         const response = await axios.get<Message[]>(
-            '/messages'
+            '/messages?page=1&size=30'
         );
         messages.value = response.data;
         console.log(messages.value);
@@ -59,4 +60,3 @@ onMounted(() => {
     axiosMessage()
 })
 </script>
-
