@@ -36,7 +36,7 @@ const messages = ref<Message[]>([]);
 const axiosMessage = async () => {
     try {
         const response = await axios.get<Message[]>(
-            'http://127.0.0.1:8000'
+            '/messages'
         );
         messages.value = response.data;
         console.log(messages.value);
