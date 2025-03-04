@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col w-[500px] h-[700px] bg-white rounded-2xl shadow-lg p-3 overflow-hidden">
         <ul class="flex flex-col gap-3 p-3 overflow-y-auto flex-grow no-scrollbar">
-            <li v-for="(message) in messages.reverse()"
+            <li v-for="(message) in messages"
                 class="flex justify-start max-w-[80%] p-3 bg-[#F2F2F2] rounded-xl shadow-md self-start w-fit relative text-wrap">
                 <div class="max-w-[60%] flex flex-col break-words"></div>
                 <div class="flex flex-col">
@@ -33,14 +33,25 @@ interface Message {
 }
 
 const messages = ref<Message[]>([]);
-
+ 
 const axiosMessage = async () => {
+
     try {
-        const response = await axios.get<Message[]>(
-            '/messages?page=1&size=30'
-        );
+        const response = await axios.get<Message[]>('/messages?page=1&size=30',{
+            // withCredentials: true,
+            headers: {
+                Authorization: ` Bearer ${localStorage.getItem('token')}`
+            },
+            onUploadProgress(progressEvent) {
+                console.log(progressEvent)
+            },
+            onDownloadProgress(progressEvent) {
+                console.log(progressEvent)
+            },
+        })
         messages.value = response.data;
         console.log(messages.value);
+
     } catch (error: any) {
         console.error('Error with get data:', error.message);
 
